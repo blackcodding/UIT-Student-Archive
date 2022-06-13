@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Megrim|Nunito+Sans:400,900"
+      rel="stylesheet"
+    />
+    <title>STUDENT RECORD 📚</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Allison&family=Dancing+Script:wght@700&display=swap');
+
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: inherit;
+      }
+
+      html {
+        font-size: 62.5%;
+        box-sizing: border-box;
+      }
+
+      body {
+        --color-primary: #9be15d;
+        --color-secondary: #00e3ae;
+        --color-tertiary: #00adb5;
+        --color-gray: #555555;
+        --color-white: #ffffff;
+        --color-shadow: rgba(0, 0, 0, 0.15);
+        --color-button-primary: #888888;
+        --color-button-secondary: #222831;
+        padding: 2rem 5rem 5rem 10rem;
+        line-height: 1.65;
+        font-family: 'Nunito Sans', sans-serif;
+        color: var(--color-gray);
+        min-height: 100vh;
+        background: linear-gradient(to bottom right, var(--color-primary), var(--color-secondary));
+        transition: all 1.5s;
+      }
+
+      body.dark{
+        --color-primary: #222831;
+        --color-secondary: #393e46;
+        --color-tertiary: #00adb5;
+        --color-gray: #555555;
+        --color-white: #eeeeee;
+        --color-shadow: rgba(0, 0, 0, 0.15);
+        --color-button-primary: #9be15d;
+        --color-button-secondary: #00e3ae;
+        transition: all 1.5s;
+      }
+
+      body::-webkit-scrollbar {
+        width: 1em;
+      }
+ 
+      body::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      }
+ 
+      body::-webkit-scrollbar-thumb {
+        background-color: var(--color-gray);
+        outline: 1px solid var(--color-gray);
+      }
+
+      .checkbox {
+        opacity: 0;
+        position: absolute;
+      }
+
+      .label {
+        width: 40px;
+        height: 20px;
+        display: flex;
+        background-image: linear-gradient(to right, var(--color-button-primary), var(--color-button-secondary));
+        border-radius:50px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 4px;
+        position: relative;
+        margin-left: 10px;
+        transform: scale(1.5);
+      }
+
+      .ball {
+        width: 15px;
+        height: 15px;
+        background-image: linear-gradient(to left, var(--color-primary), var(--color-secondary));
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        border-radius: 50%;
+        transition: transform 0.2s linear;
+      }
+
+      .checkbox:checked + .label .ball{
+        transform: translateX(21px);
+      }
+
+
+      h1 {
+        font-family: 'Megrim', sans-serif;
+        font-size: 6rem;
+        color: var(--color-white);
+        transform: skewY(-5deg);
+        text-align: center;
+        position: relative;
+        word-spacing: 3px;
+      }
+
+      h4 {
+        font-family: 'Megrim', sans-serif;
+        font-size: 4rem;
+        color: var(--color-white);
+        transform: skewY(-5deg);
+        text-align: center;
+        position: relative;
+        word-spacing: 3px;
+      }
+
+      h1::before {
+        content: '';
+        display: block;
+        height: 65%;
+        width: 49%;
+        position: absolute;
+        top: 105%;
+        left: 50%;
+        background: linear-gradient(to bottom, var(--color-primary), var(--color-secondary));
+        opacity: 0.8;
+        z-index: -1;
+        transform: skewY(370deg) translate(-50%, -50%);
+      }
+
+      h2 {
+        font-family: 'Megrim', sans-serif;
+        font-size: 2rem;
+        color: var(--color-white);
+        position: relative;
+        word-spacing: 3px;
+        margin-top: 1rem;
+        text-align: start;
+      }
+
+      .container {
+        width: 100rem;
+        margin: 0 auto;
+      }
+
+      .cards-container {
+        margin-top: 8rem;
+      }
+
+      .card {
+        background: var(--color-white);
+        box-shadow: 0 2rem 6rem 1rem var(--color-shadow);
+        margin-bottom: 5rem;
+        transform: skewX(-20deg);
+        display: flex;
+        transition: all 0.5s;
+      }
+
+      .card__no {
+        font-family: 'Megrim', sans-serif;
+        font-size: 3rem;
+        font-weight: bold;
+        line-height: 1;
+        padding: 2.5rem 2rem 2rem 2rem;
+        transform: skewX(20deg);
+        background-image: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .card__title-box {
+        background: linear-gradient(to bottom, var(--color-primary), var(--color-secondary));
+        margin-right: auto;
+        display: flex;
+        align-items: center;
+        padding: 0rem 3rem;
+      }
+
+      .card__title {
+        font-family: 'Dancing Script', cursive;
+        color: var(--color-white);
+        font-size: 4rem;
+        transform: skewX(20deg);
+      }
+
+      .card__details {
+        display: flex;
+      }
+
+      .card__detail-box {
+        align-self: stretch;
+        border-right: 2px solid #ddd;
+        display: flex;
+        align-items: center;
+      }
+
+      .card__detail-box:last-child {
+        border: none;
+      }
+
+      .card__detail {
+        font-weight: 400;
+        font-size: 1.8rem;
+        transform: skewX(20deg);
+        padding: 1.75rem;
+      }
+
+      .card__detail--interest {
+        font-weight: 900;
+        text-transform: uppercase;
+        font-size: 2rem;
+        background-image: linear-gradient(to right, var(--color-primary), var(--color-tertiary));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .card__detail--cgpa {
+        font-weight: 900;
+        font-size: 2rem;
+      }
+
+      .card__link:link,
+      .card__link:visited {
+        flex: 0 0 auto;
+        background-image: linear-gradient(to bottom, var(--color-primary), var(--color-secondary));
+        color: var(--color-white);
+        font-size: 2rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 2.5rem;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+      }
+
+      .card__link:hover,
+      .card__link:active {
+        background-image: linear-gradient(to top, var(--color-primary), var(--color-secondary));
+        transform: scale(1.15);
+        border: 1px solid var(--color-secondary);
+      }
+
+      .card__link span {
+        transform: skewX(20deg);
+        font-weight: 900;
+      }
+
+      .card:hover {
+        transform: skewX(-20deg) scale(1.08);
+        box-shadow: 0 3rem 8rem 2rem var(--color-shadow);
+      }
+
+      .emoji-left {
+        font-size: 2rem;
+        margin-right: 1rem;
+      }
+
+      .emoji-right {
+        font-size: 2rem;
+        margin-left: 1rem;
+      }
+
+      .copyright{
+        font-family: 'Megrim', sans-serif;
+        font-size: 2rem;
+        font-weight: 900;
+        background-image: linear-gradient(to right, var(--color-button-primary), var(--color-button-secondary));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      @media only screen and (max-width: 500px) {
+        body{
+          margin: 0;
+          padding: 10px;
+        }
+
+        .label{
+          width: 30px;
+          height: 20px;
+          padding: 2px;
+          transform: scale(1.2);
+        }
+
+        .checkbox:checked + .label .ball{
+          transform: translateX(11.5px);
+        }
+
+        h1{
+          font-size: 1.8rem;
+          word-spacing: 1px;
+          margin-top: 2rem;
+        }
+
+        h4{
+          font-size: 1.8rem;
+          word-spacing: 1px;
+        }
+
+        h1::before{
+          height: 80%;
+          width: 80%;
+        }
+
+        h2{
+          font-size: 1.35rem;
+          word-spacing: 1px;
+        }
+
+        .container {
+          width: 30rem;
+          margin: 0 auto;
+        }
+
+        .cards-container {
+          margin-top: 3rem;
+        }
+
+        .card{
+          margin-bottom: 2rem;
+          margin-bottom: 1rem;
+          transform: skewX(0deg);
+          border-radius: 15px;
+        }
+
+        .card__no{
+          font-size: 1rem;
+          padding: 1rem;
+          transform: skewX(0deg);
+        }
+
+        .card__title-box{
+          padding: 0 1rem 1rem 1rem;
+        }
+
+        .card__title{
+          font-size: 1rem;
+          transform: skewX(0deg);
+        }
+
+        .card__detail{
+          font-size: 1rem;
+          transform: skewX(0deg);
+          padding: 1rem;
+        }
+
+        .card__detail--interest{
+          font-size: .5rem;
+        }
+
+        .card__detail--cgpa{
+          font-size: .5rem;
+        }
+
+        .card__link:link,
+        .card__link:visited {
+          font-size: .5rem;
+          padding: .5rem;
+        }
+        
+        .card__link:hover,
+        .card__link:active {
+          transform: scale(1.1);
+        }
+
+        .card__link span{
+          transform: skewX(0deg);
+        }
+
+        .card:hover {
+          transform: skewX(0deg) scale(1.02);
+          box-shadow: 0 1rem 2rem 1rem var(--color-shadow);
+        }
+
+        .emoji-left{
+          font-size: .5rem;
+        }
+
+        .emoji-right{
+          font-size: .5rem;
+        }
+
+        .copyright{
+          font-size: 1rem;
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    <div>
+      <input type="checkbox" class="checkbox" id="checkbox">
+      <label for="checkbox" class="label">
+      <div class='ball'></div>
+      </label>
+    </div>
+    <h2>Change Theme</h2>
+    <script>
+      const checkbox = document.getElementById('checkbox');
+      function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i <ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+          }
+        } 
+      return "";
+      }
+      let x = 0;
+      const theme = getCookie('Theme');
+      if(theme == 'black'){
+        document.body.classList.add('dark');
+        x++;
+      }
+      checkbox.addEventListener('change', ()=>{
+        document.body.classList.toggle('dark');
+        x++;
+        if(x%2 == 1){
+          document.cookie = 'Theme=black'
+        }else{
+          document.cookie = 'Theme=white'
+        }
+      })
+    </script>
+    <div class="container">
+      <h1>UIT Student's Archive</h1>
+      <h4>CSE (2018-2022)</h4>
+      <div class="cards-container">
+        {%STUDENTS_CARDS%}
+      </div>
+    </div>
+  </body>
+  <div class="copyright">&copy; Deepak Bhatt</div>
+</html>

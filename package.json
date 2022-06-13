@@ -1,0 +1,21 @@
+{
+  "name": "student-archive",
+  "version": "1.0.0",
+  "description": "UIT BURDWAN CSE 2018-2022 Batch Data",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "keywords": [
+    "student",
+    "archive"
+  ],
+  "author": "Deepak Bhatt",
+  "license": "ISC",
+  "dependencies": {
+    "slugify": "^1.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}

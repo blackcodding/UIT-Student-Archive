@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Megrim|Nunito+Sans:400,900"
+      rel="stylesheet"
+    />
+
+    <title>{%STUDENT_NAME%}</title>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Allison&family=Dancing+Script:wght@700&display=swap');
+
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: inherit;
+      }
+
+      html {
+        font-size: 62.5%;
+        box-sizing: border-box;
+      }
+
+      body {
+        --color-primary: #9be15d;
+        --color-secondary: #00e3ae;
+        --color-tertiary: #00adb5;
+        --color-gray: #555555;
+        --color-white: #ffffff;
+        --color-black: #000000;
+        --color-shadow: rgba(0, 0, 0, 0.15);
+        --color-button-primary: #888888;
+        --color-button-secondary: #222831;
+        padding: 5rem 5rem 10rem;
+        line-height: 1.7;
+        font-family: 'Nunito Sans', sans-serif;
+        color: var(--color-gray);
+        min-height: 100vh;
+        background: linear-gradient(to bottom right, var(--color-primary), var(--color-secondary));
+        transition: all 1.5s;
+      }
+
+      body.dark{
+        --color-primary: #222831;
+        --color-secondary: #393e46;
+        --color-tertiary: #00adb5;
+        --color-gray: #555555;
+        --color-white: #eeeeee;
+        --color-shadow: rgba(0, 0, 0, 0.15);
+        --color-button-primary: #9be15d;
+        --color-button-secondary: #00e3ae;
+        transition: all 1.5s;
+      }
+
+      h1 {
+        font-family: 'Megrim', sans-serif;
+        font-size: 6rem;
+        color: var(--color-white);
+        transform: skewY(-5deg);
+        text-align: center;
+        position: relative;
+        word-spacing: 3px;
+      }
+
+      h1::before {
+        content: '';
+        display: block;
+        height: 65%;
+        width: 49%;
+        position: absolute;
+        top: 105%;
+        left: 50%;
+        background: linear-gradient(to bottom, var(--color-primary), var(--color-secondary));
+        opacity: 0.8;
+        z-index: -1;
+        transform: skewY(370deg) translate(-50%, -50%);
+      }
+
+      .container {
+        width: 95rem;
+        margin: 0 auto;
+      }
+
+      .student {
+        width: 60rem;
+        margin: 0 auto;
+        margin-top: 5rem;
+        background: var(--color-white);
+        box-shadow: var(--color-shadow);
+        position: relative;
+      }
+
+      .student__hero {
+        position: relative;
+        height: 25rem;
+        overflow: hidden;
+      }
+
+      .student__hero::before {
+        content: '';
+        display: block;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-image: linear-gradient(to left bottom, var(--color-primary), var(--color-secondary));
+        opacity: 0.1;
+        z-index: 100;
+      }
+
+      
+      .student__formal{
+        position: absolute;
+        width: 50%;
+        height: 100%;
+      }
+
+      .student__informal{
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        margin-left: 50%;
+      }
+
+      .student__hero img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border: 2px solid var(--color-white);
+      }
+
+      .student__emoji {
+        font-size: 15rem;
+        position: absolute;
+      }
+
+      .student__diploma {
+        position: absolute;
+        top: -4rem;
+        right: -4rem;
+        z-index: 1000;
+        height: 11rem;
+        width: 11rem;
+        background-image: linear-gradient(to bottom, var(--color-primary), var(--color-secondary));
+        border-radius: 50%;
+        transform: rotate(15deg);
+        box-shadow: var(--color-shadow);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .student__diploma h5 {
+        font-weight: 900;
+        text-transform: uppercase;
+        font-size: 1.8rem;
+        color: var(--color-white);
+      }
+
+      .not-diploma {
+        display: none;
+      }
+
+      .student__back:link,
+      .student__back:visited {
+        position: absolute;
+        top: -2rem;
+        left: -4rem;
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-decoration: none;
+        z-index: 1000;
+        color: var(--color-gray);
+        background-color: var(--color-white);
+        box-shadow: var(--color-shadow);
+        border-radius: 100rem;
+        padding: 0 2rem;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+      }
+
+      .student__back:hover,
+      .student__back:active {
+        background-image: linear-gradient(to bottom, var(--color-primary), var(--color-secondary));
+        color: var(--color-white)
+      }
+
+      .student__name {
+        background: linear-gradient(to bottom, var(--color-primary), var(--color-secondary));
+        padding: 1rem;
+        font-family: 'Dancing Script', cursive;
+        font-size: 5rem;
+        color: var(--color-white);
+        text-align: center;
+        word-spacing: 2px;
+      }
+
+      .student__details {
+        background-color: var(--color-white);
+        padding: 2rem 4rem;
+        font-size: 1.8rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 1.5rem;
+      }
+
+      .student__details span{
+        font-size: 2.1rem;
+        font-family: 'Megrim', sans-serif;
+        font-weight: bold;
+      }
+
+      .student__description {
+        grid-template-columns: 1fr;
+      }
+
+      .student__link:link,
+      .student__link:visited {
+        display: block;
+        background-color: var(--color-primary);
+        color: var(--color-white);
+        font-size: 1.8rem;
+        font-weight: 700;
+        text-decoration: none;
+        padding: 1.5rem;
+        text-align: center;
+        transform: scale(1.07) skewX(-20deg);
+        box-shadow: var(--color-shadow);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+      }
+
+      .student__link:hover,
+      .student__link:active {
+        background-color: var(--color-primary);
+        transform: scale(1.1) skewX(-20deg);
+      }
+
+      .student__link span {
+        transform: skewX(20deg);
+      }
+
+      .emoji-left {
+        font-size: 2rem;
+        margin-right: 1rem;
+      }
+
+      .emoji-right {
+        font-size: 2rem;
+        margin-left: 1rem;
+      }
+
+      @media all and (max-width: 500px){
+        body {
+        padding: 2rem 2rem 5rem;
+      }
+
+      h1 {
+        font-size: 3rem;
+      }
+
+      h1::before {
+        height: 80%;
+        width: 80%;
+      }
+
+      .container {
+        width: 30rem;
+        margin: 0 auto;
+      }
+
+      .student {
+        width: 30rem;
+      }
+
+      .student__hero {
+        height: 15rem;
+      }
+
+      .student__hero img{
+        border: 1px solid var(--color-white);
+      }
+
+      .student__emoji {
+        font-size: 1rem;
+        position: absolute;
+      }
+
+      .student__diploma {
+        right: -1rem;
+        height: 8rem;
+        width: 8rem;
+      }
+
+      .student__diploma h5 {
+        font-size: 1rem;
+      }
+
+      .not-diploma {
+        display: none;
+      }
+
+      .student__back:link,
+      .student__back:visited {
+        top: -2rem;
+        left: -1rem;
+        font-size: 1rem;
+      }
+
+      .student__name {
+        font-size: 2rem;
+      }
+
+      .student__details {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+      }
+
+      .student__details span{
+        font-size: 1.2rem;
+      }
+
+      .student__link:link,
+      .student__link:visited {
+        font-size: 1rem;
+        padding: .8rem;
+        transform: scale(1.05) skewX(0deg);
+      }
+
+      .student__link:hover,
+      .student__link:active {
+        transform: skewX(0deg);
+      }
+
+      .student__link span {
+        transform: skewX(0deg);
+      }
+
+      .emoji-left {
+        font-size: 1rem;
+        margin-right: .5rem;
+      }
+
+      .emoji-right {
+        font-size: 1rem;
+        margin-left: .5rem;
+      }
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>STUDENT DETAIL'S</h1>
+      <script>  
+      function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i <ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+          }
+        } 
+      return "";
+      }
+      const theme = getCookie('Theme');
+      if(theme == 'black'){
+        document.body.classList.add('dark');
+      }
+      </script>
+      <figure class="student">
+        <div class="student__diploma {%NOT_DIPLOMA%}"><h5>+Diploma</h5></div>
+        <a href="/overview" class="student__back">
+          <span class="emoji-left">⬅️</span>Back
+        </a>
+        <div class="student__hero">
+          <div class="student__formal">
+            <!-- <img src="../Images/Male.jpg"> -->
+            <img src="{%STUDENT_FORMAL__IMAGE%}">
+          </div>
+          <div class="student__informal">
+            <!-- <img src="../Images/Male.jpg"> -->
+            <img src="{%STUDENT_INFORMAL__IMAGE%}">
+          </div>
+        </div>
+        <h2 class="student__name">{%STUDENT_NAME%}</h2>
+        <div class="student__details">
+          <p><span>Roll No : </span>20181{%STUDENT_ROLL%}</p>
+          <p><span>Reg No : </span>{%STUDENT_REGISTRATION__NO%}</p>
+          <p><span>Course : </span>{%STUDENT_COURSE%}</p>
+          <p><span>Stream : </span>{%STUDENT_STREAM%}</p>
+          <p><span>CGPA : </span>{%STUDENT_CGPA%}</p>
+          <p><span>BE Passing Year : </span>{%STUDENT_BE-PASSING__YEAR%}</p>
+          <p><span>Sem 1 GPA : </span>{%STUDENT_SEM1GPA%}</p>
+          <p><span>Sem 2 GPA : </span>{%STUDENT_SEM2GPA%}</p>
+          <p><span>Sem 3 GPA : </span>{%STUDENT_SEM3GPA%}</p>
+          <p><span>Sem 4 GPA : </span>{%STUDENT_SEM4GPA%}</p>
+          <p><span>Sem 5 GPA : </span>{%STUDENT_SEM5GPA%}</p>
+          <p><span></span></p>
+          <p><span>HSC % : </span>{%STUDENT_HSC__PERCENTAGE%}</p>
+          <p><span>HSC Passing Year : </span>{%STUDENT_HSC__YEAR%}</p>
+          <p><span>SSC % : </span>{%STUDENT_SSC__PERCENTAGE%}</p>
+          <p><span>SSC Passing Year : </span>{%STUDENT_SSC__YEAR%}</p>
+          <p><span><br></span></p>
+        </div>
+        <a href="#" class="student__link">
+          <span class="emoji-left">💡</span>
+          <p><span>Email : </span>{%STUDENT_EMAIL%}</p>
+        </a>
+        <div class="student__details">
+          <p><span><br></span></p>
+          <p><span><br></span></p>
+          <p><span>DOB : </span>{%STUDENT_DOB%}</p>
+          <p><span>Gender : </span>{%STUDENT_GENDER%}</p>
+          <p><span>Father's Name : </span>{%STUDENT_FATHER__NAME%}</p>
+          <p><span>Contact : </span>{%STUDENT_CONTACT__NO%}</p>
+        </div>
+  
+        <div class="student__details student__description">
+          <p><span>Address : </span>{%STUDENT_ADDRESS%}</p>
+        </div>
+      </figure> 
+    </div>
+  </body>
+</html>
