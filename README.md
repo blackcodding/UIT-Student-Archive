@@ -30,20 +30,18 @@ Clone the repo and type following commands in terminal after opening the directo
 
 #### Main Page - 
 
-![screenshot](https://github.com/deathook007/UIT-Student-Archive/blob/main/Images/Image_1.jpg)
+![screenshot](https://github.com/blackcodding/UIT-Student-Archive/blob/main/Images/Image_01.jpg)
 
 #### Main Page (Archive) -
 
-![screenshot](https://github.com/deathook007/UIT-Student-Archive/blob/main/Images/Image_2.jpg)
+![screenshot](https://github.com/blackcodding/UIT-Student-Archive/blob/main/Images/Image_02.jpg)
 
 ### Responsive Nature -
 
-![screenshot](https://github.com/deathook007/UIT-Student-Archive/blob/main/Images/Responsive%20Behaviour.jpg)
+![screenshot](https://github.com/blackcodding/UIT-Student-Archive/blob/main/Images/Responsive%20Nature.JPG)
 
 #### Detail Page -
 
-![screenshot](https://github.com/deathook007/UIT-Student-Archive/blob/main/Images/Image_3.jpg)
+![screenshot](https://github.com/blackcodding/UIT-Student-Archive/blob/main/Images/Detail02.JPG)
 
-#### Student Details -
-
-![screenshot](https://github.com/deathook007/UIT-Student-Archive/blob/main/Images/Image_4.png)
+![screenshot](https://github.com/blackcodding/UIT-Student-Archive/blob/main/Images/Detail01.JPG)
